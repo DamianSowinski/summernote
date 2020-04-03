@@ -8,8 +8,6 @@ const pkg = require('../../package.json');
 
 const productList = [
   'summernote',
-  'summernote-bs4',
-  'summernote-lite',
   'app',
 ];
 
@@ -111,22 +109,11 @@ module.exports = {
         to: 'plugin',
       },
     ]),
+
     new HtmlWebPackPlugin({
       inject: true,
-      chunks: ['summernote'],
-      template: `./src/summernote-bs3.html`,
-      filename: 'index.html',
-    }),
-    new HtmlWebPackPlugin({
-      inject: true,
-      chunks: ['summernote-bs4'],
-      template: `./src/summernote-bs4.html`,
-      filename: 'bs4.html',
-    }),
-    new HtmlWebPackPlugin({
-      inject: true,
-      chunks: ['summernote-lite', 'app'],
-      template: `./src/summernote-lite.html`,
+      chunks: ['summernote', 'app'],
+      template: `./src/summernote.html`,
       filename: 'lite.html',
     }),
   ],

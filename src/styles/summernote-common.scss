@@ -1,19 +1,17 @@
 /* Theme Variables
  ------------------------------------------ */
-$border-color: #a9a9a9;
+$border-color: #C4C4C4;
 $background-color: #f5f5f5;
-
 $img-margin-left: 10px;
 $img-margin-right: 10px;
-
 /* Layout
  ------------------------------------------ */
 .note-editor {
   position: relative;
-
   // dropzone
   $dropzone-color: lightskyblue;
   $dropzone-active-color: darken($dropzone-color, 30);
+
   .note-dropzone {
     position: absolute;
     display: none;
@@ -68,14 +66,14 @@ $img-margin-right: 10px;
  ------------------------------------------ */
 .note-editor.note-frame,
 .note-editor.note-airframe {
-  border: 1px solid $border-color;
-
+  //border: 1px solid $border-color;
   // codeview mode
   &.codeview {
     .note-editing-area {
       .note-editable {
         display: none;
       }
+
       .note-codable {
         display: block;
       }
@@ -84,7 +82,6 @@ $img-margin-right: 10px;
 
   .note-editing-area {
     overflow: hidden;
-
     // editable
     .note-editable {
       background-color: #fff;
@@ -111,10 +108,9 @@ $img-margin-right: 10px;
       background-color: #222;
       resize: none;
       outline: none;
-
       // override BS2 default style
-      @include box-sizing(border-box);
-      @include rounded(0);
+      box-sizing: border-box;
+      border-radius: 0;
       margin-bottom: 0;
     }
   }
@@ -129,6 +125,7 @@ $img-margin-right: 10px;
     .note-editable {
       background-color: #fff;
     }
+
     .note-resizebar {
       display: none;
     }
@@ -214,15 +211,17 @@ $img-margin-right: 10px;
 
   // statusbar
   .note-statusbar {
-    background-color: $background-color;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top: 1px solid #ddd;
+    //background-color: $background-color;
+    //border-bottom-left-radius: 4px;
+    //border-bottom-right-radius: 4px;
+    //border-top: 1px solid #ddd;
+
     .note-resizebar {
       padding-top: 1px;
       height: 9px;
       width: 100%;
       cursor: ns-resize;
+
       .note-icon-bar {
         width: 20px;
         margin: 1px auto;
@@ -233,12 +232,14 @@ $img-margin-right: 10px;
     &.locked {
       .note-resizebar {
         cursor: default;
+
         .note-icon-bar {
           display: none;
         }
       }
     }
   }
+
   .note-placeholder {
     padding: 10px;
   }
@@ -253,7 +254,6 @@ $img-margin-right: 10px;
     }
   }
 }
-
 
 /* Popover
  ------------------------------------------ */
@@ -271,6 +271,7 @@ $img-margin-right: 10px;
       vertical-align: middle; // for FF
     }
   }
+
   .arrow {
     left: 20px !important;
   }
@@ -278,26 +279,17 @@ $img-margin-right: 10px;
 
 /* Popover and Toolbar (Button container)
  ------------------------------------------ */
-.note-toolbar {
-  position: relative;
-}
 
 .note-popover .popover-content, .note-toolbar {
-  margin: 0;
-  padding: 0 0 5px 5px;
-
-  & > .note-btn-group {
-    margin-top: 5px;
-    margin-left: 0;
-    margin-right: 5px;
-  }
 
   .note-btn-group {
     .note-table {
       min-width: 0;
       padding: 5px;
+
       .note-dimension-picker {
         font-size: 18px;
+
         .note-dimension-picker-mousecatcher {
           position: absolute !important;
           z-index: 3;
@@ -305,6 +297,7 @@ $img-margin-right: 10px;
           height: 10em;
           cursor: pointer;
         }
+
         .note-dimension-picker-unhighlighted {
           position: relative !important;
           z-index: 1;
@@ -312,6 +305,7 @@ $img-margin-right: 10px;
           height: 5em;
           background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACVBMVEUAAIj4+Pjp6ekKlAqjAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfYAR0BKhmnaJzPAAAAG0lEQVQI12NgAAOtVatWMTCohoaGUY+EmIkEAEruEzK2J7tvAAAAAElFTkSuQmCC") repeat;
         }
+
         .note-dimension-picker-highlighted {
           position: absolute !important;
           z-index: 2;
@@ -329,6 +323,7 @@ $img-margin-right: 10px;
         margin: 0;
         padding: 5px 10px;
       }
+
       h1, h2, h3, h4, h5, h6, p {
         margin: 0;
         padding: 0;
@@ -347,11 +342,12 @@ $img-margin-right: 10px;
       width: 20px;
       padding-left: 5px;
     }
+
     .note-dropdown-menu {
       .note-palette {
         display: inline-block;
         margin: 0;
-        width: 160px;
+
         &:first-child {
           margin: 0 5px;
         }
@@ -370,7 +366,7 @@ $img-margin-right: 10px;
           padding: 0 3px;
           cursor: pointer;
           width: 100%;
-          @include rounded(5px);
+          border-radius: 5px;
 
           &:hover {
             background: #eee;
@@ -378,7 +374,11 @@ $img-margin-right: 10px;
         }
 
         .note-color-row {
-          height: 20px;
+          display: flex;
+
+          .note-btn {
+            display: inline-block;
+          }
         }
 
         .note-color-select-btn {
@@ -394,40 +394,31 @@ $img-margin-right: 10px;
     }
   }
 
-  .note-para {
-    .note-dropdown-menu {
-      min-width: 216px;
-      padding: 5px;
-      & > div:first-child {
-        margin-right: 5px;
-      }
-    }
-  }
-
   // dropdown-menu for toolbar and popover
   .note-dropdown-menu {
-    min-width: 160px;
 
-    // dropdown-menu right position
-    // http://forrst.com/posts/Bootstrap_right_positioned_dropdown-2KB
     &.right {
       right: 0;
       left: auto;
+
       &::before {
         right: 9px;
         left: auto !important;
       }
+
       &::after {
         right: 10px;
         left: auto !important;
       }
     }
+
     // dropdown-menu for selectbox
     &.note-check {
       a i {
         color: deepskyblue;
         visibility: hidden;
       }
+
       a.checked i {
         visibility: visible;
       }
@@ -441,6 +432,7 @@ $img-margin-right: 10px;
   // color palette for toolbar and popover
   .note-color-palette {
     line-height: 1;
+
     div {
       .note-color-btn {
         width: 20px;
@@ -449,6 +441,7 @@ $img-margin-right: 10px;
         margin: 0;
         border: 1px solid #fff;
       }
+
       .note-color-btn:hover {
         border: 1px solid #000;
       }
@@ -462,15 +455,18 @@ $img-margin-right: 10px;
   .modal-dialog {
     outline: 0;
     border-radius: 5px;
-    @include box-shadow(0 3px 9px rgba(0,0,0,.5));
+    box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
   }
+
   .form-group { // overwrite BS's form-horizontal minus margins
     margin-left: 0;
     margin-right: 0;
   }
+
   .note-modal-form {
     margin: 0; // overwrite BS2's form margin bottom
   }
+
   .note-image-dialog {
     .note-dropzone {
       min-height: 100px;
@@ -507,6 +503,7 @@ $img-margin-right: 10px;
     position: absolute;
     display: none;
     border: 1px solid #000;
+
     & > div {
       position: absolute;
     }
@@ -515,7 +512,7 @@ $img-margin-right: 10px;
       width: 100%;
       height: 100%;
       background-color: #000;
-      @include opacity(0.3);
+      opacity: 0.3;
     }
 
     .note-control-handle {
@@ -574,8 +571,8 @@ $img-margin-right: 10px;
       color: #fff;
       background-color: #000;
       font-size: 12px;
-      @include rounded(5px);
-      @include opacity(0.7);
+      border-radius: 5px;
+      opacity: 0.7;
     }
   }
 }

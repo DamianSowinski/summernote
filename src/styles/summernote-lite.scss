@@ -1,29 +1,32 @@
 // Core variables and mixins
-@import 'summernote-icons.css';
-@import "elements.scss";
+@import 'summernote-icons.scss';
 @import "lite/variables.scss";
-@import "lite/mixins.scss";
-
-@import "lite/common.scss";
 @import "lite/toolbar.scss";
-@import "lite/btn-group.scss";
-@import "lite/buttons.scss";
 @import "lite/dropdown.scss";
 @import "lite/modal.scss";
 @import "lite/form.scss";
 @import "lite/tooltip.scss";
 @import "lite/popover.scss";
 
-@import 'summernote-common.scss';
+@import 'summernote-common';
+
+.note-frame {
+  box-sizing: border-box;
+  color: #000;
+  font-family: $font-family;
+}
 
 .note-editor {
   .note-editing-area {
+    margin-top: 8px;
+    box-shadow: 0 0 4px rgba(black, 0.1);
+
     .note-editable {
       table {
         width: 100%;
         border-collapse: collapse;
 
-         td, th {
+        td, th {
           border: 1px solid #ececec;
           padding: 5px 3px;
         }
@@ -61,12 +64,12 @@
       display: inline-block;
     }
 
-     .help-list-item:hover {
+    .help-list-item:hover {
       background-color: #e0e0e0;
     }
   }
 
-   // [workaround] firefox fileinput
+  // [workaround] firefox fileinput
   @-moz-document url-prefix() {
     .note-image-input {
       height: auto;
@@ -74,10 +77,59 @@
   }
 }
 
-
 .help-list-item {
   label {
-    margin-bottom:5px;
-    display:inline-block;
+    margin-bottom: 5px;
+    display: inline-block;
   }
 }
+
+// Text styles
+pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #333;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.article {
+  &__title {
+    font-family: $font-family;
+    //@include t2;
+    padding-bottom: 16px;
+    color: lighten(#333, 5%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
+    &--preview {
+      font-family: $font-family;
+      font-size: 18px;
+      color: lighten(#333, 5%);
+    }
+  }
+
+  &__info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;;
+    padding: 8px;
+    margin: 8px 0;
+    border-radius: 4px;
+
+    &--preview {
+      color: #0c5460;
+      background-color: #d1ecf1;
+      border-color: #bee5eb;;
+      border-radius: 2px;
+      padding: 2px;
+      margin: 2px 0;
+    }
+  }
+}
+
