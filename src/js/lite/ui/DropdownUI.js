@@ -60,7 +60,7 @@ class DropdownUI {
 $(document).on('click', function(e) {
   if (!$(e.target).closest('.note-btn-group').length) {
     $('.note-btn-group.open').removeClass('open');
-    $('.note-btn-group .note-btn.active').removeClass('active');
+    $('.note-btn-group .dropdown-toggle.active').removeClass('active');
   }
 });
 
