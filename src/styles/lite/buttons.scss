@@ -14,6 +14,11 @@
   @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size, $line-height, $btn-border-radius-base);
   @include user-select(none);
 
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
   &:hover,
   &:focus,
   &.focus {

@@ -507,6 +507,11 @@ const checkbox = renderer.create('<div class="checkbox"></div>', function($node,
 });
 
 const icon = function(iconClassName, tagName) {
+
+  if (String(iconClassName).substr(0, 4) === '<svg') {
+    return iconClassName;
+  }
+
   tagName = tagName || 'i';
   return '<' + tagName + ' class="' + iconClassName + '"/>';
 };

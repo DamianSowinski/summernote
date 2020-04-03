@@ -10,6 +10,7 @@ const productList = [
   'summernote',
   'summernote-bs4',
   'summernote-lite',
+  'app',
 ];
 
 let entries = {};
@@ -124,7 +125,7 @@ module.exports = {
     }),
     new HtmlWebPackPlugin({
       inject: true,
-      chunks: ['summernote-lite'],
+      chunks: ['summernote-lite', 'app'],
       template: `./src/summernote-lite.html`,
       filename: 'lite.html',
     }),
