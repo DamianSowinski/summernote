@@ -6,7 +6,7 @@ $(document).ready(() => {
     toolbar: [
       ['style', ['style']],
       ['font', ['bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript']],
-      ['font2', ['fontsize', 'forecolor', 'backcolor', 'clear']],
+      ['font-style', ['fontsize', 'forecolor', 'backcolor', 'clear']],
       ['para', ['ul', 'ol', 'paragraph']],
       ['insert', ['link', 'cite', 'table']],
       ['view', ['undo', 'redo', 'fullscreen']],

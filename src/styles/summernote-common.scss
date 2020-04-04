@@ -8,9 +8,12 @@ $img-margin-right: 10px;
  ------------------------------------------ */
 .note-editor {
   position: relative;
+
   // dropzone
   $dropzone-color: lightskyblue;
   $dropzone-active-color: darken($dropzone-color, 30);
+
+
 
   .note-dropzone {
     position: absolute;
@@ -122,9 +125,7 @@ $img-margin-right: 10px;
     left: 0;
     width: 100% !important;
     z-index: 1050; // bs3 modal-backdrop: 1030, bs2: 1040
-    .note-editable {
-      background-color: #fff;
-    }
+    background-color: #fff;
 
     .note-resizebar {
       display: none;

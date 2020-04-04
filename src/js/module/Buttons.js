@@ -67,12 +67,14 @@ export default class Buttons {
   }
 
   colorPalette(className, tooltip, backColor, foreColor) {
+    console.log(backColor, foreColor);
+    
     return this.ui.buttonGroup({
       className: 'note-color ' + className,
       children: [
         this.button({
           className: 'note-current-color-button',
-          contents: this.ui.icon(this.options.icons.font + ' note-recent-color'),
+          contents: this.ui.icon(foreColor ? this.options.icons.font : this.options.icons.highlighter),
           tooltip: tooltip,
           click: (e) => {
             const $button = $(e.currentTarget);
@@ -95,10 +97,12 @@ export default class Buttons {
             const $recentColor = $button.find('.note-recent-color');
             if (backColor) {
               $recentColor.css('background-color', this.options.colorButton.backColor);
+              $button.find('.ico-color').attr('fill', this.options.colorButton.backColor);
               $button.attr('data-backColor', this.options.colorButton.backColor);
             }
             if (foreColor) {
               $recentColor.css('color', this.options.colorButton.foreColor);
+              $button.find('.ico-color').attr('fill', this.options.colorButton.foreColor);
               $button.attr('data-foreColor', this.options.colorButton.foreColor);
             } else {
               $recentColor.css('color', 'transparent');
@@ -215,7 +219,7 @@ export default class Buttons {
                 const key = eventName === 'backColor' ? 'background-color' : 'color';
                 const $color = $button.closest('.note-color').find('.note-recent-color');
                 const $currentButton = $button.closest('.note-color').find('.note-current-color-button');
-
+                $currentButton.find('.ico-color').attr('fill', value);
                 $color.css(key, value);
                 $currentButton.attr('data-' + eventName, value);
               }

@@ -189,7 +189,7 @@ $.summernote = $.extend($.summernote, {
 
     colorButton: {
       foreColor: '#000000',
-      backColor: '#FFFF00',
+      backColor: '#eee722',
     },
 
     lineHeights: ['1.0', '1.2', '1.4', '1.5', '1.6', '1.8', '2.0', '3.0'],
@@ -329,8 +329,8 @@ $.summernote = $.extend($.summernote, {
       'alignRight': require('../icons/align-right.svg'),
       'indent': require('../icons/align-indent.svg'),
       'outdent': require('../icons/align-outdent.svg'),
-      // 'font': require('../icons/font.svg'),
-      'font': 'note-icon-font',
+      'font': require('../icons/font.svg'),
+      // 'font': 'note-icon-font',
       'highlighter': require('../icons/highlighter.svg'),
       'link': require('../icons/link.svg'),
       'unlink': require('../icons/link-broken.svg'),
