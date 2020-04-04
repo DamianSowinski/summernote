@@ -5,7 +5,7 @@
  */
 import chai from 'chai';
 import $ from 'jquery';
-import Context from 'src/js/base/Context';
+import Context from 'src/js/Context';
 import 'src/js/bs4/settings';
 
 describe('Placeholder', () => {

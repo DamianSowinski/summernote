@@ -5,8 +5,8 @@
  */
 import chai from 'chai';
 import $ from 'jquery';
-import Context from 'src/js/base/Context';
-import VideoDialog from 'src/js/base/module/VideoDialog';
+import Context from 'src/js/Context';
+import VideoDialog from 'src/js/module/VideoDialog';
 import 'src/js/bs4/settings';
 
 describe('VideoDialog', () => {

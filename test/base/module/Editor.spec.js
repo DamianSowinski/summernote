@@ -8,9 +8,9 @@ import chai from 'chai';
 import spies from 'chai-spies';
 import chaidom from 'test/chaidom';
 import $ from 'jquery';
-import env from 'src/js/base/core/env';
-import range from 'src/js/base/core/range';
-import Context from 'src/js/base/Context';
+import env from 'src/js/core/env';
+import range from 'src/js/core/range';
+import Context from 'src/js/Context';
 import 'src/js/bs4/settings';
 
 describe('Editor', () => {

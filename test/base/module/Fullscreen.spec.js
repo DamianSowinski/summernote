@@ -6,8 +6,8 @@
 
 import chai from 'chai';
 import $ from 'jquery';
-import Context from 'src/js/base/Context';
-import Fullscreen from 'src/js/base/module/Fullscreen';
+import Context from 'src/js/Context';
+import Fullscreen from 'src/js/module/Fullscreen';
 import 'src/js/bs4/settings';
 
 describe('Fullscreen', () => {
