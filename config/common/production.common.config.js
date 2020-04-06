@@ -6,7 +6,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const scssConfig = require('./scss.config');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const ZipPlugin = require('zip-webpack-plugin');
 
 const pkg = require('../../package.json');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -125,7 +124,7 @@ module.exports = {
       {
         test: /\.svg$/,
         use: [
-          'svg-inline-loader?classPrefix',
+          'svg-inline-loader',
           {
             loader: 'svgo-loader',
             options: {
@@ -188,9 +187,6 @@ module.exports = {
     new webpack.SourceMapDevToolPlugin({
       test: /(summernote)(\.min)?\.js$/g,
       filename: '[name].js.map',
-    }),
-    new ZipPlugin({
-      filename: `summernote-${pkg.version}-dist.zip`,
     }),
   ],
 };

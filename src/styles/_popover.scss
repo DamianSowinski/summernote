@@ -1,22 +1,39 @@
 .note-popover {
+  font-family: $font-family;
+  font-size: 13px;
   position: absolute;
-  z-index: $zindex-popover;
-  display: block;
   // Our parent element can be arbitrary since popovers are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
-  font-size: 13px;
-  font-family: $font-family;
-
+  z-index: $zindex-popover;
+  display: block;
   display: none;
-  background: $popover-bg;
   border: 1px solid $popover-border-color;
   border: 1px solid $popover-fallback-border-color;
+  background: $popover-bg;
 
-  &.in     { display: block; }
-  &.top    { margin-top:  -10px; padding: $tooltip-arrow-width 0; }
-  &.right  { margin-left:  10px; padding: 0 $tooltip-arrow-width; }
-  &.bottom { margin-top:   10px; padding: $tooltip-arrow-width 0; }
-  &.left   { margin-left: -10px; padding: 0 $tooltip-arrow-width; }
+  &.in {
+    display: block;
+  }
+
+  &.top {
+    margin-top: -10px;
+    padding: $tooltip-arrow-width;
+  }
+
+  &.right {
+    margin-left: 10px;
+    padding: $tooltip-arrow-width;
+  }
+
+  &.bottom {
+    margin-top: 10px;
+    padding: $tooltip-arrow-width;
+  }
+
+  &.left {
+    margin-left: -10px;
+    padding: $tooltip-arrow-width;
+  }
 }
 
 .note-popover {
@@ -41,16 +58,16 @@
     bottom: -11px;
     left: 20px;
     margin-left: -$popover-arrow-width;
-    border-bottom-width: 0;
     border-top-color: $popover-arrow-outer-fallback-color;
     border-top-color: $popover-arrow-outer-color;
+    border-bottom-width: 0;
 
     &::after {
       bottom: 1px;
       margin-left: -10px;
       content: " ";
-      border-bottom-width: 0;
       border-top-color: #fff;
+      border-bottom-width: 0;
     }
   }
 
@@ -58,19 +75,19 @@
     top: 50%;
     left: -11px;
     margin-top: -$popover-arrow-width;
-    border-left-width: 0;
     border-right-color: $popover-arrow-outer-fallback-color;
     border-right-color: $popover-arrow-outer-color;
+    border-left-width: 0;
 
     &::after {
       left: 1px;
       margin-top: -10px;
       content: " ";
-      border-left-width: 0;
       border-right-color: #fff;
+      border-left-width: 0;
     }
-
   }
+
   &.left .note-popover-arrow {
     top: 50%;
     right: -11px;
@@ -89,7 +106,6 @@
   }
 }
 
-
 .note-popover-arrow {
   position: absolute;
   width: 0;
@@ -101,22 +117,48 @@
     display: block;
     width: 0;
     height: 0;
-    border-color: transparent;
-    border-style: solid;
-
-
-    content :  " ";
+    content: " ";
     border-width: 10px;
+    border-style: solid;
+    border-color: transparent;
   }
-
 }
 
 .note-popover-content {
   /*max-width: $popover-max-width;*/
-  padding: 3px 8px;
-  color: $popover-color;
-  text-align: center;
-  background-color: $popover-bg;
   min-width: 100px;
   min-height: 30px;
+  padding: 3px 8px;
+  text-align: center;
+  color: $popover-color;
+  background-color: $popover-bg;
+}
+
+.note-popover.popover {
+  display: none;
+  max-width: none;
+
+  .popover-content {
+    a {
+      display: inline-block;
+      overflow: hidden;
+      max-width: 200px;
+      vertical-align: middle; // for FF
+      white-space: nowrap; // for FF
+      text-overflow: ellipsis;
+    }
+  }
+
+  .arrow {
+    left: 20px !important;
+  }
+}
+
+.note-table-popover {
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .1);
+
+  .popover-content {
+    display: flex;
+  }
 }

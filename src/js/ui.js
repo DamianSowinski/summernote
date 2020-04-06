@@ -105,7 +105,7 @@ const dropdownCheck = renderer.create('<div class="note-dropdown-menu note-check
 });
 
 const dropdownButtonContents = function(contents, options) {
-  return contents + ' ' + icon(options.icons.caret, 'span');
+  return contents + ' ' + icon(options.icons.caret);
 };
 
 const dropdownButton = function(opt, callback) {
@@ -509,6 +509,11 @@ const checkbox = renderer.create('<div class="checkbox"></div>', function($node,
 const icon = function(iconClassName, tagName) {
 
   if (String(iconClassName).substr(0, 4) === '<svg') {
+
+    if (tagName) {
+      iconClassName = $(iconClassName).addClass(tagName);
+    }
+
     return iconClassName;
   }
 

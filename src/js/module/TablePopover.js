@@ -60,7 +60,7 @@ export default class TablePopover {
       pos.left -= containerOffset.left;
 
       this.$popover.css({
-        display: 'block',
+        display: 'flex',
         left: pos.left,
         top: pos.top,
       });

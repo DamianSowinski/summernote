@@ -1,0 +1,47 @@
+.note-modal {
+  .modal-dialog {
+    border-radius: 5px;
+    outline: 0;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+  }
+
+  .form-group { // overwrite BS's form-horizontal minus margins
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .note-modal-form {
+    margin: 0; // overwrite BS2's form margin bottom
+  }
+
+  .note-image-dialog {
+    .note-dropzone {
+      font-size: 30px;
+      line-height: 4; // vertical-align
+      min-height: 100px;
+      margin-bottom: 10px;
+      text-align: center;
+      color: lightgray;
+      border: 4px dashed lightgray;
+    }
+  }
+
+  .note-modal-body {
+    label {
+      display: inline-block;
+      margin-bottom: 2px;
+      padding: 2px 5px;
+    }
+
+    .help-list-item:hover {
+      background-color: #e0e0e0;
+    }
+  }
+
+  // [workaround] firefox fileinput
+  @-moz-document url-prefix() {
+    .note-image-input {
+      height: auto;
+    }
+  }
+}

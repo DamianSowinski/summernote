@@ -1,0 +1,340 @@
+.note-editor {
+  position: relative;
+
+  // dropzone
+  $dropzone-color: lightskyblue;
+  $dropzone-active-color: darken($dropzone-color, 30);
+
+
+  .note-dropzone {
+    position: absolute;
+    display: none;
+    z-index: 100;
+    color: $dropzone-color;
+    background-color: #fff;
+    opacity: 0.95;
+
+    .note-dropzone-message {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    &.hover {
+      color: $dropzone-active-color;
+    }
+  }
+
+  &.dragover .note-dropzone {
+    display: table;
+  }
+
+  .note-editing-area {
+    position: relative;
+    margin-top: 8px;
+    box-shadow: 0 0 4px rgba(black, 0.1);
+
+    .note-editable {
+      outline: none;
+
+      sup {
+        vertical-align: super;
+      }
+
+      sub {
+        vertical-align: sub;
+      }
+
+      img.note-float-left {
+        margin-right: $img-margin-right;
+      }
+
+      img.note-float-right {
+        margin-left: $img-margin-left;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+
+        td, th {
+          padding: 5px 3px;
+          border: 1px solid #ececec;
+        }
+      }
+
+      a {
+        font-family: inherit;
+        font-weight: inherit;
+        text-decoration: inherit;
+        color: #337ab7;
+        background-color: inherit;
+      }
+
+      a:hover,
+      a:focus {
+        text-decoration: underline;
+        color: #23527c;
+        outline: 0;
+      }
+
+      figure {
+        margin: 0;
+      }
+
+      span {
+        margin: -4px;
+        padding: 4px;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  //  text styles
+  pre {
+    font-size: 13px;
+    line-height: 1.42857143;
+    display: block;
+    margin: 0 0 10px;
+    padding: 9.5px;
+    word-wrap: break-word;
+    word-break: break-all;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+  }
+
+  .article {
+    &__title {
+      font-family: $font-family;
+      //@include t2;
+      padding-bottom: 16px;
+      color: lighten(#333, 5%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
+      &--preview {
+        font-family: $font-family;
+        font-size: 18px;
+        color: lighten(#333, 5%);
+      }
+    }
+
+    @mixin articleInfo {
+      color: #0c5460;
+      background-color: #d1ecf1;
+      border: 1px solid darken(#d1ecf1, 10%);
+      padding: 8px;
+      margin: 8px 0;
+      border-radius: 4px;
+    }
+
+    &__info {
+      @include articleInfo;
+
+      p {
+        margin: 0;
+      }
+
+      &--preview {
+        @include articleInfo;
+        margin: 2px 0;
+        padding: 2px;
+        border-radius: 2px;
+      }
+    }
+  }
+}
+
+/* Frame mode layout
+ ------------------------------------------ */
+.note-editor.note-frame,
+.note-editor.note-airframe {
+  //border: 1px solid $border-color;
+  // codeview mode
+  &.codeview {
+    .note-editing-area {
+      .note-editable {
+        display: none;
+      }
+
+      .note-codable {
+        display: block;
+      }
+    }
+  }
+
+  .note-editing-area {
+    overflow: hidden;
+    // editable
+    .note-editable {
+      background-color: #fff;
+      color: #000;
+      padding: 10px;
+      overflow: auto;
+      word-wrap: break-word;
+
+      &[contenteditable="false"] {
+        background-color: #e5e5e5;
+      }
+    }
+
+    // codeable
+    .note-codable {
+      display: none;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      box-shadow: none;
+      font-family: Menlo, Monaco, monospace, sans-serif;
+      font-size: 14px;
+      color: #ccc;
+      background-color: #222;
+      resize: none;
+      outline: none;
+      // override BS2 default style
+      box-sizing: border-box;
+      border-radius: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  // fullscreen mode
+  &.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    z-index: 1050; // bs3 modal-backdrop: 1030, bs2: 1040
+    background-color: #fff;
+
+    .note-resizebar {
+      display: none;
+    }
+  }
+
+  // Notifications
+  .note-status-output {
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.42857143;
+    height: 20px;
+    margin-bottom: 0;
+    color: #000;
+    border: 0;
+    border-top: 1px solid #e2e2e2;
+  }
+
+  .note-status-output:empty {
+    height: 0;
+    border-top: 0 solid transparent;
+  }
+
+  .note-status-output .pull-right {
+    float: right !important;
+  }
+
+  .note-status-output .text-muted {
+    color: #777;
+  }
+
+  .note-status-output .text-primary {
+    color: #286090;
+  }
+
+  .note-status-output .text-success {
+    color: #3c763d;
+  }
+
+  .note-status-output .text-info {
+    color: #31708f;
+  }
+
+  .note-status-output .text-warning {
+    color: #8a6d3b;
+  }
+
+  .note-status-output .text-danger {
+    color: #a94442;
+  }
+
+  .note-status-output .alert {
+    margin: -7px 0 0 0;
+    padding: 7px 10px 2px 10px;
+    border-radius: 0;
+    color: #000;
+    background-color: #f5f5f5;
+  }
+
+  .note-status-output .alert .note-icon {
+    margin-right: 5px;
+  }
+
+  .note-status-output .alert-success {
+    color: #3c763d !important;
+    background-color: #dff0d8 !important;
+  }
+
+  .note-status-output .alert-info {
+    color: #31708f !important;
+    background-color: #d9edf7 !important;
+  }
+
+  .note-status-output .alert-warning {
+    color: #8a6d3b !important;
+    background-color: #fcf8e3 !important;
+  }
+
+  .note-status-output .alert-danger {
+    color: #a94442 !important;
+    background-color: #f2dede !important;
+  }
+
+  // statusbar
+  .note-statusbar {
+    //background-color: $background-color;
+    //border-bottom-left-radius: 4px;
+    //border-bottom-right-radius: 4px;
+    //border-top: 1px solid #ddd;
+
+    .note-resizebar {
+      padding-top: 1px;
+      height: 9px;
+      width: 100%;
+      cursor: ns-resize;
+
+      .note-icon-bar {
+        width: 20px;
+        margin: 1px auto;
+        border-top: 1px solid $border-color;
+      }
+    }
+
+    &.locked {
+      .note-resizebar {
+        cursor: default;
+
+        .note-icon-bar {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .note-placeholder {
+    padding: 10px;
+  }
+}
+
+.note-editor.note-airframe {
+  border: 0;
+
+  .note-editing-area {
+    .note-editable {
+      padding: 0;
+    }
+  }
+}

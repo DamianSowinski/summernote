@@ -68,7 +68,7 @@ export default class Buttons {
 
   colorPalette(className, tooltip, backColor, foreColor) {
     console.log(backColor, foreColor);
-    
+
     return this.ui.buttonGroup({
       className: 'note-color ' + className,
       children: [
@@ -97,12 +97,12 @@ export default class Buttons {
             const $recentColor = $button.find('.note-recent-color');
             if (backColor) {
               $recentColor.css('background-color', this.options.colorButton.backColor);
-              $button.find('.ico-color').attr('fill', this.options.colorButton.backColor);
+              $button.find('.smn__active-color').attr('fill', this.options.colorButton.backColor);
               $button.attr('data-backColor', this.options.colorButton.backColor);
             }
             if (foreColor) {
               $recentColor.css('color', this.options.colorButton.foreColor);
-              $button.find('.ico-color').attr('fill', this.options.colorButton.foreColor);
+              $button.find('.smn__active-color').attr('fill', this.options.colorButton.foreColor);
               $button.attr('data-foreColor', this.options.colorButton.foreColor);
             } else {
               $recentColor.css('color', 'transparent');
@@ -121,45 +121,39 @@ export default class Buttons {
           items: (backColor ? [
             '<div class="note-palette">',
               '<div class="note-palette-title">' + this.lang.color.background + '</div>',
-              '<div>',
-                '<button type="button" class="note-color-reset btn btn-light" data-event="backColor" data-value="transparent">',
-                  this.lang.color.transparent,
-                '</button>',
-              '</div>',
               '<div class="note-holder" data-event="backColor"/>',
+              '<div class="note-palette-title u-mt-sm">' + this.lang.color.customColor + '</div>',
+              '<div class="note-holder-custom" id="backColorPalette" data-event="backColor"/>',
               '<div>',
                 '<button type="button" class="note-color-select btn btn-light" data-event="openPalette" data-value="backColorPicker">',
+                  this.options.icons.palette,
                   this.lang.color.cpSelect,
                 '</button>',
                 '<input type="color" id="backColorPicker" class="note-btn note-color-select-btn" value="' + this.options.colorButton.backColor + '" data-event="backColorPalette">',
               '</div>',
-              '<div class="note-holder-custom" id="backColorPalette" data-event="backColor"/>',
             '</div>',
           ].join('') : '') +
           (foreColor ? [
             '<div class="note-palette">',
               '<div class="note-palette-title">' + this.lang.color.foreground + '</div>',
+              '<div class="note-holder" data-event="foreColor"></div>',
+              '<div class="note-palette-title u-mt-sm">' + this.lang.color.customColor + '</div>',
+              '<div class="note-holder-custom" id="foreColorPalette" data-event="foreColor"></div>',
               '<div>',
-                '<button type="button" class="note-color-reset btn btn-light" data-event="removeFormat" data-value="foreColor">',
-                  this.lang.color.resetToDefault,
-                '</button>',
-              '</div>',
-              '<div class="note-holder" data-event="foreColor"/>',
-              '<div>',
-                '<button type="button" class="note-color-select btn btn-light" data-event="openPalette" data-value="foreColorPicker">',
+                '<button type="button" class="note-color-select" data-event="openPalette" data-value="foreColorPicker">',
+                  this.options.icons.palette,
                   this.lang.color.cpSelect,
                 '</button>',
                 '<input type="color" id="foreColorPicker" class="note-btn note-color-select-btn" value="' + this.options.colorButton.foreColor + '" data-event="foreColorPalette">',
-              '</div>', // Fix missing Div, Commented to find easily if it's wrong
-              '<div class="note-holder-custom" id="foreColorPalette" data-event="foreColor"/>',
+              '</div>',
             '</div>',
           ].join('') : ''),
           callback: ($dropdown) => {
             $dropdown.find('.note-holder').each((idx, item) => {
               const $holder = $(item);
               $holder.append(this.ui.palette({
-                colors: this.options.colors,
-                colorsName: this.options.colorsName,
+                colors: backColor ? this.options.highlightColors : this.options.colors,
+                colorsName: backColor ? this.options.highlightColorName : this.options.colorsName,
                 eventName: $holder.data('event'),
                 container: this.options.container,
                 tooltip: this.options.tooltip,
@@ -219,7 +213,7 @@ export default class Buttons {
                 const key = eventName === 'backColor' ? 'background-color' : 'color';
                 const $color = $button.closest('.note-color').find('.note-recent-color');
                 const $currentButton = $button.closest('.note-color').find('.note-current-color-button');
-                $currentButton.find('.ico-color').attr('fill', value);
+                $currentButton.find('.smn__active-color').attr('fill', value);
                 $color.css(key, value);
                 $currentButton.attr('data-' + eventName, value);
               }
@@ -747,7 +741,7 @@ export default class Buttons {
     this.context.memo('button.addRowUp', () => {
       return this.button({
         className: 'btn-md',
-        contents: this.ui.icon(this.options.icons.rowAbove),
+        contents: this.ui.icon(this.options.icons.tableInsertZone, 'u-rotate-180'),
         tooltip: this.lang.table.addRowAbove,
         click: this.context.createInvokeHandler('editor.addRow', 'top'),
       }).render();
@@ -755,7 +749,7 @@ export default class Buttons {
     this.context.memo('button.addRowDown', () => {
       return this.button({
         className: 'btn-md',
-        contents: this.ui.icon(this.options.icons.rowBelow),
+        contents: this.ui.icon(this.options.icons.tableInsertZone),
         tooltip: this.lang.table.addRowBelow,
         click: this.context.createInvokeHandler('editor.addRow', 'bottom'),
       }).render();
@@ -763,7 +757,7 @@ export default class Buttons {
     this.context.memo('button.addColLeft', () => {
       return this.button({
         className: 'btn-md',
-        contents: this.ui.icon(this.options.icons.colBefore),
+        contents: this.ui.icon(this.options.icons.tableInsertZone, 'u-rotate-90'),
         tooltip: this.lang.table.addColLeft,
         click: this.context.createInvokeHandler('editor.addCol', 'left'),
       }).render();
@@ -771,7 +765,7 @@ export default class Buttons {
     this.context.memo('button.addColRight', () => {
       return this.button({
         className: 'btn-md',
-        contents: this.ui.icon(this.options.icons.colAfter),
+        contents: this.ui.icon(this.options.icons.tableInsertZone, 'u-rotate--90'),
         tooltip: this.lang.table.addColRight,
         click: this.context.createInvokeHandler('editor.addCol', 'right'),
       }).render();
@@ -779,7 +773,7 @@ export default class Buttons {
     this.context.memo('button.deleteRow', () => {
       return this.button({
         className: 'btn-md',
-        contents: this.ui.icon(this.options.icons.rowRemove),
+        contents: this.ui.icon(this.options.icons.tableDeleteZone),
         tooltip: this.lang.table.delRow,
         click: this.context.createInvokeHandler('editor.deleteRow'),
       }).render();
@@ -787,7 +781,7 @@ export default class Buttons {
     this.context.memo('button.deleteCol', () => {
       return this.button({
         className: 'btn-md',
-        contents: this.ui.icon(this.options.icons.colRemove),
+        contents: this.ui.icon(this.options.icons.tableDeleteZone, 'u-rotate--90'),
         tooltip: this.lang.table.delCol,
         click: this.context.createInvokeHandler('editor.deleteCol'),
       }).render();
@@ -795,7 +789,7 @@ export default class Buttons {
     this.context.memo('button.deleteTable', () => {
       return this.button({
         className: 'btn-md',
-        contents: this.ui.icon(this.options.icons.trash),
+        contents: this.ui.icon(this.options.icons.tableDelete),
         tooltip: this.lang.table.delTable,
         click: this.context.createInvokeHandler('editor.deleteTable'),
       }).render();

@@ -31,6 +31,11 @@ $btn-default-border: #dae0e5;
 $btn-default-hover-bg: #DEDEDE;
 $btn-default-active-bg: #f0f0f0;
 
+$border-color: #C4C4C4;
+$background-color: #f5f5f5;
+$img-margin-left: 10px;
+$img-margin-right: 10px;
+
 $input-bg: #fff;
 $input-bg-disabled: $gray-lighter;
 $input-color: $gray;
@@ -68,7 +73,6 @@ $popover-arrow-color:      $popover-bg;
 $popover-arrow-outer-width:($popover-arrow-width + 1);
 $popover-arrow-outer-color:fade-in($popover-border-color, .05);
 $popover-arrow-outer-fallback-color:  darken($popover-fallback-border-color, 20%);
-
 
 $modal-inner-padding: 15px;
 $modal-title-padding: 15px;

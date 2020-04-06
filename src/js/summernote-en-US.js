@@ -107,11 +107,12 @@ $.extend($.summernote.lang, {
       more: 'More Color',
       background: 'Background Color',
       foreground: 'Text Color',
+      customColor: 'Custom colors',
       transparent: 'Transparent',
       setTransparent: 'Set transparent',
       reset: 'Reset',
       resetToDefault: 'Reset to default',
-      cpSelect: 'Select',
+      cpSelect: 'More colors',
     },
     shortcut: {
       shortcuts: 'Keyboard shortcuts',

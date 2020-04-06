@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" clip-rule="evenodd" viewBox="0 0 512 512">
-  <path fill="#333" fill-rule="nonzero" d="M151 208l28-24 118 117-24 29c-7 7-17 10-26 7l-29-9-42 40H64l89-105-9-29c-3-9 0-20 7-26z"/>
-  <path  class="ico-color" fill-rule="nonzero" d="M453 72c14 14 15 36 2 51L320 277 205 162 359 27c15-13 37-12 51 2l43 43z"/>
+  <path fill="#333" d="M151 208l28-24 118 117-24 29c-7 7-17 10-26 7l-29-9-42 40H64l89-105-9-29c-3-9 0-20 7-26z"/>
+  <path  class="smn__active-color" d="M453 72c14 14 15 36 2 51L320 277 205 162 359 27c15-13 37-12 51 2l43 43z"/>
   <path fill="#333" d="M453 72c14 14 15 36 2 51L320 277 205 162 359 27c15-13 37-12 51 2l43 43zM319 254l124-142c7-8 7-21-1-29l-43-43a21 21 0 00-29-1L228 163l91 91z"/>
 
-    <path class="ico-color" d="M496 448c0-27-21-48-48-48H64c-27 0-48 21-48 48s21 48 48 48h384c27 0 48-21 48-48z"/>
+    <path class="smn__active-color" d="M496 448c0-27-21-48-48-48H64c-27 0-48 21-48 48s21 48 48 48h384c27 0 48-21 48-48z"/>
 
 </svg>

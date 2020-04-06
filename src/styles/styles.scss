@@ -1,0 +1,33 @@
+// Core variables and mixins
+@import 'summernote-icons.scss';
+@import "variables";
+@import "toolbar";
+@import "dropdown";
+@import "modal";
+@import "form";
+@import "tooltip";
+@import "popover";
+
+@import 'layout';
+@import 'dialog';
+@import 'handle';
+@import 'placeholder';
+@import 'utilities';
+
+
+.note-frame {
+  font-family: $font-family;
+  box-sizing: border-box;
+  color: #000;
+}
+
+
+.help-list-item {
+  label {
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+}
+
+
+
