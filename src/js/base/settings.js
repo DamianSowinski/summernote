@@ -336,6 +336,7 @@ $.summernote = $.extend($.summernote, {
       'floatLeft': 'note-icon-float-left',
       'floatRight': 'note-icon-float-right',
       'font': 'note-icon-font',
+      'highlighter': require('../../icons/highlighter.svg'),
       'frame': 'note-icon-frame',
       'italic': 'note-icon-italic',
       'link': 'note-icon-link',
