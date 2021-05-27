@@ -1,0 +1,172 @@
+.note-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+  color: #333;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+
+  .note-style {
+    .note-dropdown-menu {
+      min-width: 200px;
+    }
+  }
+
+  .note-para {
+    .open .note-dropdown-menu {
+      display: flex;
+    }
+  }
+}
+
+.note-btn-group {
+  position: relative;
+  display: flex;
+  margin-right: 4px;
+  padding-right: 4px;
+  border-right: 1px solid rgba(black, 0.1);
+
+  &:last-child {
+    margin-right: 0;
+    padding-right: 0;
+    border-right: none;
+  }
+
+  > .note-btn-group {
+    margin-right: 0;
+    padding-right: 0;
+    border: none;
+
+    &.note-color {
+      margin: 4px 4px 4px 0;
+      border-radius: 4px;
+
+      &:hover {
+        box-shadow: 0 0 1px 1px $btn-default-hover-bg;
+      }
+
+      .note-btn {
+        margin: 0;
+        border-radius: 0;
+
+        &.dropdown-toggle {
+          min-width: unset;
+        }
+      }
+    }
+  }
+
+  &.open {
+    > .note-dropdown {
+      display: block;
+    }
+  }
+}
+
+.note-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  margin: 4px 4px 4px 0;
+  padding: 4px;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  background-color: transparent;
+  touch-action: manipulation;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover,
+  &:focus,
+  &.focus {
+    background-color: $btn-default-hover-bg;
+  }
+
+  &:active,
+  &.active {
+    background-color: $btn-default-hover-bg;
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: $cursor-disabled;
+    opacity: 0.65;
+    box-shadow: none;
+
+    &:focus,
+    &.focus {
+      border-color: $btn-default-border;
+      background-color: $btn-default-bg;
+    }
+  }
+
+  & > span.note-icon-caret:first-child {
+    margin-left: -1px;
+  }
+
+  & > span.note-icon-caret:nth-child(2) {
+    margin-right: -5px;
+    padding-left: 3px;
+  }
+}
+
+.note-btn-primary {
+  color: #fff;
+  background: #21629b;
+  padding: 4px 8px;
+
+  &:hover,
+  &:focus,
+  &.focus {
+    text-decoration: none;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    background-color: lighten(#21629b, 10%);
+  }
+}
+
+.note-btn-block {
+  display: block;
+  width: 100%;
+}
+
+.note-btn-block + .note-btn-block {
+  margin-top: 5px;
+}
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.note-btn-block {
+    width: 100%;
+  }
+}
+
+button.close {
+  padding: 0;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+}
+
+.close {
+  font-size: 21px;
+  line-height: 1;
+  float: right;
+  opacity: .2;
+  color: #000;
+
+  &:hover {
+    opacity: 1
+  }
+}

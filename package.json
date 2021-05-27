@@ -103,5 +103,8 @@
     "webpack-dev-server": "^3.10.3",
     "zip-webpack-plugin": "^4.0.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "svgo-loader": "^2.2.1",
+    "svg-inline-loader": "^0.8.2"
+  }
 }

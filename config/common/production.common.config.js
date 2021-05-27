@@ -26,11 +26,7 @@ Date: ${date}
 const minBanner = `Summernote v${pkg.version} | (c) 2013- Alan Hong and other contributors | MIT license`;
 
 const productList = [
-  'summernote',
-  'summernote-bs4',
   'summernote-lite',
-  'summernote.min',
-  'summernote-bs4.min',
   'summernote-lite.min',
 ];
 
@@ -119,7 +115,28 @@ module.exports = {
       },
       scssConfig,
       {
-        test: /\.(png|jpe?g|gif|svg)$/,
+        test: /\.svg$/,
+        use: [
+          'svg-inline-loader?classPrefix',
+          {
+            loader: 'svgo-loader',
+            options: {
+              plugins: [
+                // {removeTitle: true},
+                // {removeXMLNS: false},
+                // {cleanupListOfValues: true},
+                {sortAttrs: true},
+                {convertPathData: {floatPrecision: 0}},
+                // {removeDimensions: true},
+                {removeAttrs: {attrs: '(clip-rule|stroke-linejoin|stroke-miterlimit)'}},
+              ],
+
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/,
         use: [
           {
             loader: 'file-loader',
@@ -161,7 +178,7 @@ module.exports = {
       ],
     }),
     new webpack.SourceMapDevToolPlugin({
-      test: /(summernote|summernote\-bs4|summernote\-lite)(\.min)?\.js$/g,
+      test: /(summernote-lite)(\.min)?\.js$/g,
       filename: '[name].js.map',
     }),
     new ZipPlugin({

@@ -72,7 +72,7 @@ export default class Buttons {
       children: [
         this.button({
           className: 'note-current-color-button',
-          contents: this.ui.icon(this.options.icons.font + ' note-recent-color'),
+          contents: this.ui.icon(foreColor ? this.options.icons.font : this.options.icons.highlighter),
           tooltip: tooltip,
           click: (e) => {
             const $button = $(e.currentTarget);
@@ -95,10 +95,12 @@ export default class Buttons {
             const $recentColor = $button.find('.note-recent-color');
             if (backColor) {
               $recentColor.css('background-color', this.options.colorButton.backColor);
+              $button.find('.smn__active-color').attr('fill', this.options.colorButton.backColor);
               $button.attr('data-backColor', this.options.colorButton.backColor);
             }
             if (foreColor) {
               $recentColor.css('color', this.options.colorButton.foreColor);
+              $button.find('.smn__active-color').attr('fill', this.options.colorButton.foreColor);
               $button.attr('data-foreColor', this.options.colorButton.foreColor);
             } else {
               $recentColor.css('color', 'transparent');
@@ -117,14 +119,12 @@ export default class Buttons {
           items: (backColor ? [
             '<div class="note-palette">',
               '<div class="note-palette-title">' + this.lang.color.background + '</div>',
-              '<div>',
-                '<button type="button" class="note-color-reset btn btn-light btn-default" data-event="backColor" data-value="transparent">',
-                  this.lang.color.transparent,
-                '</button>',
-              '</div>',
               '<div class="note-holder" data-event="backColor"><!-- back colors --></div>',
+              // '<div class="note-palette-title u-mt-sm">' + this.lang.color.customColor + '</div>',
+              // '<div class="note-holder-custom" id="backColorPalette" data-event="backColor"/>',
               '<div>',
                 '<button type="button" class="note-color-select btn btn-light btn-default" data-event="openPalette" data-value="backColorPicker-'+this.options.id+'">',
+                  // this.options.icons.palette,
                   this.lang.color.cpSelect,
                 '</button>',
                 '<input type="color" id="backColorPicker-'+this.options.id+'" class="note-btn note-color-select-btn" value="' + this.options.colorButton.backColor + '" data-event="backColorPalette-'+this.options.id+'">',
@@ -135,18 +135,17 @@ export default class Buttons {
           (foreColor ? [
             '<div class="note-palette">',
               '<div class="note-palette-title">' + this.lang.color.foreground + '</div>',
-              '<div>',
-                '<button type="button" class="note-color-reset btn btn-light btn-default" data-event="removeFormat" data-value="foreColor">',
-                  this.lang.color.resetToDefault,
-                '</button>',
-              '</div>',
               '<div class="note-holder" data-event="foreColor"><!-- fore colors --></div>',
+              // '<div class="note-holder" data-event="foreColor"></div>',
+              // '<div class="note-palette-title u-mt-sm">' + this.lang.color.customColor + '</div>',
+              // '<div class="note-holder-custom" id="foreColorPalette" data-event="foreColor"></div>',
               '<div>',
                 '<button type="button" class="note-color-select btn btn-light btn-default" data-event="openPalette" data-value="foreColorPicker-'+this.options.id+'">',
+                  // this.options.icons.palette,
                   this.lang.color.cpSelect,
                 '</button>',
                 '<input type="color" id="foreColorPicker-'+this.options.id+'" class="note-btn note-color-select-btn" value="' + this.options.colorButton.foreColor + '" data-event="foreColorPalette-'+this.options.id+'">',
-              '</div>', // Fix missing Div, Commented to find easily if it's wrong
+              '</div>',
               '<div class="note-holder-custom" id="foreColorPalette-'+this.options.id+'" data-event="foreColor"></div>',
             '</div>',
           ].join('') : ''),
@@ -154,13 +153,16 @@ export default class Buttons {
             $dropdown.find('.note-holder').each((idx, item) => {
               const $holder = $(item);
               $holder.append(this.ui.palette({
-                colors: this.options.colors,
-                colorsName: this.options.colorsName,
+                colors: backColor ? this.options.highlightColors : this.options.colors,
+                colorsName: backColor ? this.options.highlightColorName : this.options.colorsName,
+                // colors: this.options.colors,
+                // colorsName: this.options.colorsName,
                 eventName: $holder.data('event'),
                 container: this.options.container,
                 tooltip: this.options.tooltip,
               }).render());
             });
+
             /* TODO: do we have to record recent custom colors within cookies? */
             var customColors = [
               ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF'],
@@ -216,6 +218,7 @@ export default class Buttons {
                 const $color = $button.closest('.note-color').find('.note-recent-color');
                 const $currentButton = $button.closest('.note-color').find('.note-current-color-button');
 
+                $currentButton.find('.smn__active-color').attr('fill', value);
                 $color.css(key, value);
                 $currentButton.attr('data-' + eventName, value);
               }

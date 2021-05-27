@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>summernote-lite</title>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-  <style type="text/css">
+  <style>
     body {
-      margin: 0 auto;
+      margin: 100px auto;
       max-width: 900px;
     }
   </style>
@@ -15,20 +15,40 @@
     $(document).ready(function() {
       $('.summernote').summernote({
         height: 300,
-        tabsize: 2
+        tabsize: 2,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript']],
+          ['font-style', ['fontsize', 'textsize', 'forecolor', 'backcolor', 'clear']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['insert', ['link', 'cite', 'table', 'codeview']],
+          ['view', ['undo', 'redo', 'fullscreen']],
+        ],
+
+        styleTags: [
+          'p',
+          {title: 'Title', tag: 'h3', style: 'article__title--preview', className: 'article__title', value: 'h3'},
+          {
+            title: 'Note',
+            tag: 'blockquote',
+            style: 'article__info--preview',
+            className: 'article__info',
+            value: 'blockquote',
+          },
+          {title: 'Code', tag: 'pre', className: 'pre2', value: 'pre'},
+        ],
+
+        colors: [
+          ['#000000', '#424242', '#636363', '#9C9C94', '#CEC6CE', '#EFEFEF', '#F7F7F7', '#FFFFFF'],
+          ['#E79C9C', '#FFC69C', '#FFE79C', '#B5D6A5', '#A5C6CE', '#9CC6EF', '#B5A5D6', '#D6A5BD'],
+          ['#9C0000', '#B56308', '#BD9400', '#397B21', '#104A5A', '#085294', '#311873', '#731842'],
+          ['#630000', '#7B3900', '#846300', '#295218', '#083139', '#003163', '#21104A', '#4A1031'],
+        ],
       });
     });
   </script>
 </head>
 <body>
-  <div style='float:right;'>
-    <a href='index.html'>Bootstrap 3</a>
-    /
-    <a href='bs4.html'>Bootstrap 4</a>
-    /
-    <a href="examples/">Example</a>
-  </div>
-  <h1>Summernote standalone</h1>
-  <div class="summernote"></div>
+  <div class="summernote">test <strong>bold</strong> and <i>italic</i> text</div>
 </body>
 </html>
