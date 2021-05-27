@@ -157,7 +157,7 @@ $.summernote = $.extend($.summernote, {
     fontNamesIgnoreCheck: [],
     addDefaultFonts: true,
 
-    fontSizes: ['8', '9', '10', '11', '12', '14', '18', '24', '36'],
+    fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '24', '36'],
 
     fontSizeUnits: ['px', 'pt'],
 
@@ -374,7 +374,7 @@ $.summernote = $.extend($.summernote, {
       'trash': require('../../icons/trash.svg'),
       'video': require('../../icons/video.svg'),
 
-
+      // 'menuCheck': 'note-icon-menu-check',
       'rowBelow': 'note-icon-row-below',
       'colBefore': 'note-icon-col-before',
       'colAfter': 'note-icon-col-after',

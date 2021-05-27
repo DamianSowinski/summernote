@@ -47,3 +47,15 @@ a.note-dropdown-item:hover {
   text-decoration: none;
 }
 
+.note-dropdown-item svg {
+  visibility: hidden;
+  fill: none;
+  width: 16px;
+  height: 16px;
+  stroke: green;
+  stroke-width: 40px;
+}
+
+.note-dropdown-item.checked svg {
+  visibility: visible;
+}
