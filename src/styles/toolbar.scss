@@ -67,8 +67,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 32px;
-  height: 32px;
+  min-width: 30px;
+  height: 30px;
   margin: 4px 4px 4px 0;
   padding: 4px;
   cursor: pointer;
@@ -80,8 +80,8 @@
   touch-action: manipulation;
 
   svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
   }
 
   &:hover,
@@ -121,17 +121,16 @@
 
 .note-btn-primary {
   color: #fff;
-  background: #21629b;
-  padding: 4px 8px;
+  background: #fa6362;
 
   &:hover,
   &:focus,
   &.focus {
     text-decoration: none;
     color: #fff;
-    border: none;
-    border-radius: 4px;
-    background-color: lighten(#21629b, 10%);
+    border: 1px solid $btn-default-border;
+    border-radius: 1px;
+    background-color: #fa6362;
   }
 }
 
@@ -144,9 +143,9 @@
   margin-top: 5px;
 }
 
-input[type="submit"],
-input[type="reset"],
-input[type="button"] {
+input[type='submit'],
+input[type='reset'],
+input[type='button'] {
   &.note-btn-block {
     width: 100%;
   }

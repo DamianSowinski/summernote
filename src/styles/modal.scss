@@ -1,15 +1,15 @@
 .note-modal {
   position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
   z-index: $zindex-modal;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   @include opacity(1);
   display: none;
 
   &.open {
-    display:block;
+    display: block;
   }
 }
 
@@ -18,11 +18,11 @@
   width: auto;
   margin: 30px 20px;
   border: 1px solid $modal-content-border-color;
+  border-radius: 5px;
+  outline: 0;
   background: $modal-content-bg;
   background-clip: border-box;
-  outline: 0;
-  border-radius: 5px;
-  @include box-shadow(0 3px 9px rgba(0,0,0,.5));
+  @include box-shadow(0 3px 9px rgba(0, 0, 0, .5));
 }
 
 .note-modal-header {
@@ -33,14 +33,13 @@
 .note-modal-body {
   position: relative;
   padding: 20px 30px;
-
   // shortcut text style
   kbd {
+    font-weight: 700;
+    padding: 3px 5px;
+    color: #fff;
     border-radius: 2px;
     background-color: #000;
-    color: #fff;
-    padding: 3px 5px;
-    font-weight: 700;
     @include box-sizing();
   }
 }
@@ -49,18 +48,17 @@
   height: 40px;
   padding: 10px;
   text-align: center;
-
 }
 
 .note-modal-footer a {
+  text-decoration: none;
   color: #337ab7;
-  text-decoration: none
 }
 
 .note-modal-footer a:hover,
 .note-modal-footer a:focus {
+  text-decoration: underline;
   color: #23527c;
-  text-decoration: underline
 }
 
 .note-modal-footer .note-btn {
@@ -69,27 +67,26 @@
 
 .note-modal-title {
   font-size: 20px;
-  color: #42515f;
-  margin: 0;
   line-height: 1.4;
+  margin: 0;
+  color: #42515f;
 }
 
 .note-modal-backdrop {
   position: fixed;
-  left: 0;
+  z-index: $zindex-modal-background;
+  top: 0;
   right: 0;
   bottom: 0;
-  top: 0;
-  z-index: $zindex-modal-background;
-  background: $modal-backdrop-bg;
-  @include opacity(0.5);
+  left: 0;
   display: none;
+  @include opacity(0.5);
+  background: $modal-backdrop-bg;
 
   &.open {
     display: block;
   }
 }
-
 
 // Scale up the modal
 @media (min-width: 768px) {
@@ -107,7 +104,6 @@
 }
 
 .note-modal {
-
   .note-help-block {
     display: block;
     margin-top: 5px;
@@ -119,25 +115,24 @@
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    padding-left: 0;
+    flex-wrap: wrap;
     margin-bottom: 0;
+    padding-left: 0;
     list-style: none;
   }
 
   .note-nav-link {
     display: block;
     padding: 0.5rem 1rem;
-    color: #007bff;
     text-decoration: none;
+    color: #007bff;
     background-color: transparent;
-    -webkit-text-decoration-skip: objects;
   }
 
   .note-nav-link:focus,
   .note-nav-link:hover {
-    color: #0056b3;
     text-decoration: none;
+    color: #0056b3;
   }
 
   .note-nav-link.disabled {
@@ -165,14 +160,14 @@
 
   .note-nav-tabs .note-nav-link.disabled {
     color: #868e96;
-    background-color: transparent;
     border-color: transparent;
+    background-color: transparent;
   }
 
   .note-nav-tabs .note-nav-item.show .note-nav-link {
     color: #495057;
-    background-color: #fff;
     border-color: #ddd #ddd #fff;
+    background-color: #fff;
   }
 
   .note-tab-content {
@@ -183,6 +178,7 @@
   .note-tab-content > .note-tab-pane {
     display: none;
   }
+
   .note-tab-content > :last-child,
   .note-tab-content > .note-tab-pane:target {
     display: block;

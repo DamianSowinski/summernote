@@ -82,13 +82,11 @@ $.summernote = $.extend($.summernote, {
     codeviewKeepButton: false,
     toolbar: [
       ['style', ['style']],
-      ['font', ['bold', 'underline', 'clear']],
-      ['fontname', ['fontname']],
-      ['color', ['color']],
+      ['font', ['bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript']],
+      ['font-style', ['fontsize', 'textsize', 'forecolor', 'backcolor', 'clear']],
       ['para', ['ul', 'ol', 'paragraph']],
-      ['table', ['table']],
-      ['insert', ['link', 'picture', 'video']],
-      ['view', ['fullscreen', 'codeview', 'help']],
+      ['insert', ['link', 'cite', 'table', 'codeview']],
+      ['view', ['undo', 'redo', 'fullscreen']],
     ],
 
     // popover
@@ -121,10 +119,10 @@ $.summernote = $.extend($.summernote, {
     overrideContextMenu: false, // TBD
 
     width: null,
-    height: null,
+    height: 300,
     linkTargetBlank: true,
     useProtocol: true,
-    defaultProtocol: 'http://',
+    defaultProtocol: 'https://',
 
     focus: false,
     tabDisabled: false,
@@ -152,7 +150,53 @@ $.summernote = $.extend($.summernote, {
     hintSelect: 'after',
     hintDirection: 'bottom',
 
-    styleTags: ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+    styleTags: [
+      {
+        title: 'Normal',
+        tag: 'p',
+        value: 'p',
+        className: '',
+        style: `
+          padding: 4px; 
+          `,
+      },
+      {
+        title: 'Title',
+        tag: 'h3',
+        value: 'h3',
+        className: 'o-title',
+        style: `
+          padding: 4px; 
+          font-size: 18px;
+          `,
+      },
+      {
+        title: 'Notice',
+        tag: 'blockquote',
+        value: 'blockquote',
+        className: 'o-txt--notice',
+        style: `
+          margin: 0;
+          padding: 4px;
+          border: 1px solid rgba(gray, 0.05);
+          background-color: rgba(gray, 0.2);
+          border-radius: 4px;
+          `,
+      },
+      {
+        title: 'Code',
+        tag: 'pre',
+        value: 'pre',
+        className: 'o-txt--code',
+        style: `
+          margin: 0;
+          padding: 4px;
+          border: 1px solid rgba(#2a8ed4, 0.8);
+          border-radius: 4px;
+          background-color: rgba(#2a8ed4, 0.5);
+          `,
+      },
+    ],
 
     fontNames: [
       'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New',
@@ -162,7 +206,7 @@ $.summernote = $.extend($.summernote, {
     fontNamesIgnoreCheck: [],
     addDefaultFonts: true,
 
-    fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '24', '36'],
+    fontSizes: ['12', '16', '24'],
 
     fontSizeUnits: ['px', 'pt'],
 
@@ -377,13 +421,6 @@ $.summernote = $.extend($.summernote, {
       'textHeight': require('../icons/text-height.svg'),
       'trash': require('../icons/trash.svg'),
       'video': require('../icons/video.svg'),
-
-      'rowBelow': 'note-icon-row-below',
-      'colBefore': 'note-icon-col-before',
-      'colAfter': 'note-icon-col-after',
-      'rowAbove': 'note-icon-row-above',
-      'rowRemove': 'note-icon-row-remove',
-      'colRemove': 'note-icon-col-remove',
     },
   },
 });

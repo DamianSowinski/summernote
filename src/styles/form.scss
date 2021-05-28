@@ -7,25 +7,24 @@
 }
 
 .note-form-label {
+  font-size: 16px;
+  font-weight: 700;
   display: block;
   width: 100%;
-  font-size: 16px;
-  color: #42515f;
   margin-bottom: 10px;
-  font-weight: 700;
+  color: #42515f;
 }
 
 .note-input {
-  width: 100%;
-  display: block;
-  border: 1px solid #ededef;
-  background: #fff;
-  outline: 0;
-  padding: 6px 4px;
   font-size: 14px;
+  display: block;
+  width: 100%;
+  padding: 6px 4px;
+  border: 1px solid #ededef;
+  outline: 0;
+  background: #fff;
   @include box-sizing();
 }
-
 
 .note-input::-webkit-input-placeholder {
   color: $gray-lighter;
@@ -35,7 +34,7 @@
   color: $gray-lighter;
 }
 
-.note-input::-moz-placeholder {  /* Firefox 19+ */
+.note-input::-moz-placeholder { /* Firefox 19+ */
   color: $gray-lighter;
 }
 

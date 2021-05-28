@@ -1,8 +1,5 @@
-// Core variables and mixins
-@import 'summernote-icons.scss';
 @import 'elements.scss';
 @import 'variables';
-@import 'mixins';
 @import 'toolbar';
 @import 'dropdown';
 @import 'modal';
@@ -13,76 +10,87 @@
 @import 'summernote-common.scss';
 
 .note-frame {
+  font-family: $font-family;
   box-sizing: border-box;
   color: #000;
-  font-family: $font-family;
 }
 
 .note-editor {
   .note-editing-area {
     margin-top: 8px;
     box-shadow: 0 0 4px rgba(black, 0.1);
+  }
+}
 
+.note-editor.note-frame,
+.note-editor.note-airframe {
+  //border: 1px solid $border-color;
+  .note-editable {
+    padding: 10px;
+    color: #000;
+    background-color: #fff;
+
+    &[contenteditable='false'] {
+      background-color: #e5e5e5;
+    }
+  }
+
+  // fullscreen mode
+  &.fullscreen {
     .note-editable {
-      table {
-        width: 100%;
-        border-collapse: collapse;
-
-         td, th {
-          border: 1px solid #ececec;
-          padding: 5px 3px;
-        }
-      }
-
-      a {
-        background-color: inherit;
-        text-decoration: inherit;
-        font-family: inherit;
-        font-weight: inherit;
-        color: #337ab7;
-      }
-
-      a:hover,
-      a:focus {
-        color: #23527c;
-        text-decoration: underline;
-        outline: 0;
-      }
-
-      figure {
-        margin: 0;
-      }
-    }
-  }
-}
-
-/* Dialog
- ------------------------------------------*/
-.note-modal {
-  .note-modal-body {
-    label {
-      margin-bottom: 2px;
-      padding: 2px 5px;
-      display: inline-block;
-    }
-
-     .help-list-item:hover {
-      background-color: #e0e0e0;
+      background-color: #fff;
     }
   }
 
-   // [workaround] firefox fileinput
-  @-moz-document url-prefix() {
-    .note-image-input {
-      height: auto;
-    }
-  }
 }
 
 
-.help-list-item {
-  label {
-    margin-bottom:5px;
-    display:inline-block;
+/* style tags */
+.note-editable {
+  p {
+    margin: 0 0 16px 0;
   }
+}
+
+.o-title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.o-txt--notice {
+  margin: 8px 0;
+  padding: 8px;
+  border: 1px solid rgba(#2a8ed4, 0.8);
+  border-radius: 4px;
+  background-color: rgba(#2a8ed4, 0.5);
+
+  p {
+    margin: 0;
+  }
+}
+
+.o-txt--code {
+  margin: 8px 0;
+  padding: 8px;
+  border: 1px solid rgba(gray, 0.05);
+  border-radius: 4px;
+  background-color: rgba(gray, 0.2);
+
+  p {
+    margin: 0;
+  }
+}
+
+/* rotate */
+.u-rotate-180 {
+  transform: rotate(180deg);
+}
+
+.u-rotate-90 {
+  transform: rotate(90deg);
+}
+
+.u-rotate--90 {
+  transform: rotate(-90deg);
 }

@@ -1,19 +1,36 @@
 .note-tooltip {
+  font-size: 13px;
   position: absolute;
   z-index: $zindex-tooltip;
-  display: block;
   // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
-  font-size: 13px;
-
+  display: block;
   transition: opacity .15s;
   @include opacity(0);
 
-  &.in     { @include opacity($tooltip-opacity); }
-  &.top    { margin-top:  -3px; padding: $tooltip-arrow-width 0; }
-  &.right  { margin-left:  3px; padding: 0 $tooltip-arrow-width; }
-  &.bottom { margin-top:   3px; padding: $tooltip-arrow-width 0; }
-  &.left   { margin-left: -3px; padding: 0 $tooltip-arrow-width; }
+  &.in {
+    @include opacity($tooltip-opacity);
+  }
+
+  &.top {
+    margin-top: -3px;
+    padding: $tooltip-arrow-width 0;
+  }
+
+  &.right {
+    margin-left: 3px;
+    padding: 0 $tooltip-arrow-width;
+  }
+
+  &.bottom {
+    margin-top: 3px;
+    padding: $tooltip-arrow-width 0;
+  }
+
+  &.left {
+    margin-left: -3px;
+    padding: 0 $tooltip-arrow-width;
+  }
 }
 
 .note-tooltip {
@@ -40,6 +57,7 @@
     border-width: $tooltip-arrow-width $tooltip-arrow-width $tooltip-arrow-width 0;
     border-right-color: $tooltip-arrow-color;
   }
+
   &.left .note-tooltip-arrow {
     top: 50%;
     right: 0;
@@ -49,20 +67,19 @@
   }
 }
 
-
 .note-tooltip-arrow {
   position: absolute;
   width: 0;
   height: 0;
-  border-color: transparent;
   border-style: solid;
+  border-color: transparent;
 }
 
 .note-tooltip-content {
-  max-width: $tooltip-max-width;
   font-family: $font-family;
+  max-width: $tooltip-max-width;
   padding: 3px 8px;
-  color: $tooltip-color;
   text-align: center;
+  color: $tooltip-color;
   background-color: $tooltip-bg;
 }
