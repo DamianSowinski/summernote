@@ -1,7 +1,7 @@
 const config = require('./common/dev.common.config');
 module.exports = {
   entry: {
-    'summernote-lite': './src/js/lite/settings',
+    'summernote-lite': './src/js/settings',
     ...config.entries,
   },
   mode: 'development',

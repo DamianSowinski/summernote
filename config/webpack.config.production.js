@@ -1,8 +1,8 @@
 const config = require('./common/production.common.config');
 module.exports = {
   entry: {
-    'summernote-lite': './src/js/lite/settings',
-    'summernote-lite.min': './src/js/lite/settings',
+    'summernote-lite': './src/js/settings',
+    'summernote-lite.min': './src/js/settings',
     ...config.entries,
   },
   mode: 'production',

@@ -6,9 +6,8 @@
 import $ from 'jquery';
 import chai from 'chai';
 import chaidom from 'test/chaidom';
-import Context from 'src/js/base/Context';
-import Codeview from 'src/js/base/module/Codeview';
-import 'src/js/bs4/settings';
+import Context from 'src/js/Context';
+import Codeview from 'src/js/module/Codeview';
 
 chai.use(chaidom);
 
