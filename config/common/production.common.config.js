@@ -116,7 +116,7 @@ module.exports = {
       {
         test: /\.svg$/,
         use: [
-          'svg-inline-loader?classPrefix',
+          'svg-inline-loader',
           {
             loader: 'svgo-loader',
             options: {
