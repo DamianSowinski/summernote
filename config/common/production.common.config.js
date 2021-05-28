@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const scssConfig = require('./scss.config');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const ZipPlugin = require('zip-webpack-plugin');
+// const ZipPlugin = require('zip-webpack-plugin');
 
 const pkg = require('../../package.json');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -26,8 +26,7 @@ Date: ${date}
 const minBanner = `Summernote v${pkg.version} | (c) 2013- Alan Hong and other contributors | MIT license`;
 
 const productList = [
-  'summernote-lite',
-  'summernote-lite.min',
+  'summernote',
 ];
 
 let entries = {};
@@ -61,7 +60,7 @@ module.exports = {
   optimization: {
     minimizer: [
       new TerserPlugin({
-        test: /\min\.js$/g,
+        test: /\.js$/g,
         extractComments: false,
         terserOptions: {
           sourceMap: true,
@@ -72,7 +71,7 @@ module.exports = {
         },
       }),
       new CssMinimizerPlugin({
-        test: /\min\.css$/g,
+        test: /\.css$/g,
         sourceMap: true,
         minimizerOptions: {
           preset: [
@@ -177,12 +176,12 @@ module.exports = {
         },
       ],
     }),
-    new webpack.SourceMapDevToolPlugin({
-      test: /(summernote-lite)(\.min)?\.js$/g,
-      filename: '[name].js.map',
-    }),
-    new ZipPlugin({
-      filename: `summernote-${pkg.version}-dist.zip`,
-    }),
+    // new webpack.SourceMapDevToolPlugin({
+    //   test: /(summernote-lite)(\.min)?\.js$/g,
+    //   filename: '[name].js.map',
+    // }),
+    // new ZipPlugin({
+    //   filename: `summernote-${pkg.version}-dist.zip`,
+    // }),
   ],
 };
